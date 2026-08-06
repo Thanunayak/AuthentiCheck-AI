@@ -1,0 +1,61 @@
+{
+  "Michael Kors": {
+    "avg_price": 20000,
+    "models": ["MK123", "MK-5896"],
+    "serial_prefix": "MK"
+  },
+
+  "Nike": {
+    "avg_price": 8000,
+    "models": ["NK-AF1-07", "NK-JORDAN-1"],
+    "serial_prefix": "NK"
+  },
+
+  "Adidas": {
+    "avg_price": 7000,
+    "models": ["AD-ULTRABOOST-22"],
+    "serial_prefix": "AD"
+  },
+
+  "Louis Vuitton": {
+    "avg_price": 120000,
+    "models": ["LV-NVFL-MM"],
+    "serial_prefix": "LV"
+  },
+
+  "Gucci": {
+    "avg_price": 90000,
+    "models": ["GC-MARMONT"],
+    "serial_prefix": "GC"
+  },
+
+  "Prada": {
+    "avg_price": 85000,
+    "models": ["PR-GALLERIA"],
+    "serial_prefix": "PR"
+  },
+
+  "Burberry": {
+    "avg_price": 150000,
+    "models": ["TB-MINI", "LOLABAG"],
+    "serial_prefix": "BB"
+  },
+
+  "Fendi": {
+    "avg_price": 180000,
+    "models": ["BAGUETTE", "PEEKABOO"],
+    "serial_prefix": "FD"
+  },
+
+  "Rolex": {
+    "avg_price": 900000,
+    "models": ["SUBMARINER", "DAYTONA"],
+    "serial_prefix": "RX"
+  },
+
+  "Coach": {
+    "avg_price": 40000,
+    "models": ["TABBY", "WILLOW"],
+    "serial_prefix": "CH"
+  }
+}
