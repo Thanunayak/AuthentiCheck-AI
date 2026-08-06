@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AuthentiCheck AI</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI,sans-serif;
+}
+
+body{
+    background:#0a0a0a;
+    color:white;
+}
+
+.hero{
+    min-height:100vh;
+    padding:60px;
+}
+
+.logo{
+    color:#ff7b00;
+    font-size:18px;
+    font-weight:600;
+}
+
+.hero-content{
+   font-size:80px;
+    margin-bottom:20px;
+    letter-spacing:3px;
+}
+
+.hero-content h1{
+    font-size:80px;
+    margin-bottom:20px;
+    letter-spacing:3px;
+    font-weight:800;
+}
+
+.hero-content h1 span{
+    color:#ff7b00;
+    text-shadow:0 0 20px #ff7b00;
+}
+
+.hero-content span{
+    color:#ff7b00;
+}
+
+.hero-content p{
+    color:#bdbdbd;
+    font-size:18px;
+    margin-bottom:30px;
+}
+
+.verify-btn{
+    background:#ff7b00;
+    color:white;
+    border:none;
+    padding:15px 40px;
+    border-radius:50px;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.verify-btn:hover{
+    box-shadow:0 0 30px #ff7b00;
+}
+
+.brand-strip{
+    margin-top:80px;
+    overflow:hidden;
+    white-space:nowrap;
+}
+
+.brand-strip span{
+    display:inline-block;
+    padding-left:100%;
+    animation:scroll 18s linear infinite;
+    color:#ff7b00;
+    font-size:22px;
+}
+
+@keyframes scroll{
+    from{
+        transform:translateX(0);
+    }
+    to{
+        transform:translateX(-100%);
+    }
+}
+
+.cards{
+    margin-top:80px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.card{
+    background:#111;
+    border:1px solid #222;
+    border-radius:20px;
+    padding:30px;
+}
+
+.card h3{
+    color:#ff7b00;
+    margin-bottom:10px;
+}
+
+.upload-section{
+    margin-top:80px;
+    text-align:center;
+}
+
+.upload-box{
+    border:2px dashed #ff7b00;
+    border-radius:20px;
+    padding:50px;
+    max-width:700px;
+    margin:auto;
+}
+
+.upload-box input{
+    margin-top:20px;
+}
+
+.form-section{
+    margin-top:60px;
+    text-align:center;
+}
+
+.form-section input{
+    width:250px;
+    padding:12px;
+    margin:10px;
+    border:none;
+    border-radius:10px;
+}
+
+.check-btn{
+    background:#ff7b00;
+    color:white;
+    border:none;
+    padding:12px 35px;
+    border-radius:50px;
+    cursor:pointer;
+}
+
+#result{
+    max-width:800px;
+    margin:40px auto;
+    background:#111;
+    border-radius:20px;
+    padding:25px;
+}
+
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+
+<div class="logo">
+🛡️ AuthentiCheck AI
+</div>
+
+<div class="hero-content">
+
+<h1>
+AUTHENTICHECK <span>AI</span>
+</h1>
+
+<h2 style="margin-top:20px;font-size:32px;font-weight:500;">
+Check. Click. Authenticate Your Originals with AI.
+</h2>
+
+<p style="margin-top:20px;">
+AI-powered verification for luxury bags, watches,
+sneakers, and accessories.
+</p>
+
+</div>
+
+<div class="brand-strip">
+<span>
+Louis Vuitton • Gucci • Prada • Rolex • Burberry • Fendi • Coach • Michael Kors • Nike • Adidas
+</span>
+</div>
+
+<div class="cards">
+
+<div class="card">
+<h3>Brand Validation</h3>
+<p>Verify supported luxury brands instantly.</p>
+</div>
+
+<div class="card">
+<h3>Serial Analysis</h3>
+<p>Check serial format and authenticity indicators.</p>
+</div>
+
+<div class="card">
+<h3>AI Confidence</h3>
+<p>Receive confidence-based verification results.</p>
+</div>
+
+</div>
+
+<div class="upload-section">
+
+<div class="upload-box">
+
+<h2>📷 Upload Product Image</h2>
+
+<p>Drag & Drop or Choose File</p>
+
+<input
+type="file"
+id="productImage"
+accept="image/*">
+
+</div>
+
+</div>
+
+<div class="form-section">
+
+<input id="brand" placeholder="Brand">
+
+<input id="model" placeholder="Model">
+
+<input id="price" placeholder="Price">
+
+<input id="serial" placeholder="Serial">
+
+<br>
+
+<button class="check-btn"
+onclick="check()">
+Verify Product
+</button>
+
+</div>
+
+<div id="result"></div>
+
+</section>
+
+<script>
+
+async function check(){
+
+const res = await fetch(
+"http://127.0.0.1:5000/analyze",
+{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+brand:document.getElementById("brand").value,
+model:document.getElementById("model").value,
+price:Number(document.getElementById("price").value),
+serial:document.getElementById("serial").value
+})
+});
+
+const data = await res.json();
+
+document.getElementById("result").innerHTML =
+"<pre>"+JSON.stringify(data,null,2)+"</pre>";
+}
+
+</script>
+
+</body>
+</html>
